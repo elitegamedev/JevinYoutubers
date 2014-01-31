@@ -31,7 +31,7 @@ public class Main extends JavaPlugin {
 				if (player.isOp()) {
 					if (args.length == 0) {
 						if (player.hasPermission("yt.use")) {
-							List<String> yts = getConfig().getStringList("youtubers");
+							List<String> yts = getConfig().getStringList("yts");
 							player.sendMessage(ChatColor.RED + "" + yts);
 						}
 					} else if (args.length == 2) {

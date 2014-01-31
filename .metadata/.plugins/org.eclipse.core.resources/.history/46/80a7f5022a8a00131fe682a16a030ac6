@@ -31,14 +31,14 @@ public class Main extends JavaPlugin {
 				if (player.isOp()) {
 					if (args.length == 0) {
 						if (player.hasPermission("yt.use")) {
-							List<String> yts = getConfig().getStringList("youtubers");
+							List<String> yts = getConfig().getStringList("yts");
 							player.sendMessage(ChatColor.RED + "" + yts);
 						}
 					} else if (args.length == 2) {
-						if (args[0].equalsIgnoreCase("add")) {
-							List<String> yts = getConfig().getStringList("youtubers");
+						if (args[0] == "add") {
+							List<String> yts = getConfig().getStringList("yts");
 							yts.add(args[1]);
-							getConfig().set("youtubers", yts);
+							getConfig().set("yts", yts);
 							saveConfig();
 							player.sendMessage(ChatColor.RED + "You have succefully added " + args[1]);
 						}
