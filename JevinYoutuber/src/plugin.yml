@@ -1,0 +1,6 @@
+name: Youtubers
+version: 0.1
+main: com.jevin.YT.Main
+commands:
+    youtubers:
+        description: List's all the YouTubers on this server.

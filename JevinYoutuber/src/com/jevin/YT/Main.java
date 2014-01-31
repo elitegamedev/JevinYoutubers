@@ -1,5 +1,11 @@
 package com.jevin.YT;
 
+import java.util.List;
+
+import org.bukkit.ChatColor;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin {
@@ -7,7 +13,41 @@ public class Main extends JavaPlugin {
 	@Override
 	public void onEnable() {
 		getLogger().info("This plugin was developed by EliteGameDev for Jevin89");
-		
+		saveDefaultConfig();
+	}
+	
+	@Override
+	public void onDisable() {
+		getLogger().info("This plugin was developed by EliteGameDev for Jevin89");
+		saveDefaultConfig();
+	}
+	
+	@Override
+	public boolean onCommand(CommandSender sender, Command command,
+			String label, String[] args) {
+		Player player = (Player) sender;
+		if (label.equalsIgnoreCase("youtubers")) {
+			if (sender instanceof Player) {
+				if (player.isOp()) {
+					if (args.length == 0) {
+						if (player.hasPermission("yt.use")) {
+							List<String> yts = getConfig().getStringList("yts");
+							player.sendMessage(ChatColor.RED + "" + yts);
+						}
+					} else if (args.length == 2) {
+						if (args[0] == "add") {
+							List<String> yts = getConfig().getStringList("yts");
+							yts.add(args[1]);
+						}
+					} else {
+						player.sendMessage(ChatColor.RED + "Usage: /youtubers [add] [name]");
+					}
+				}
+				
+				
+			}
+		}
+		return true;
 	}
 	
 }
